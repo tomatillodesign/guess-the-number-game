@@ -8,18 +8,58 @@
  * The main app object.
  *
  */
-var vanillaPress = {
+var guessTheNumber = function () {
 
-  init: function() {
+     //Add event listener to start the game when the user presses the start button
+     var startButton = document.getElementById( 'startButton' );
 
-    // Add any functions here you want
-    // to run to start the application
-    model.init();
+          function displayLinkInfo( event ) {
+            event.preventDefault();
+            console.log( startButton );
 
-  }
+            // When the button is clicked, run the following functions
+            beginGame();
+            insertInstructions();
+
+
+          }
+
+     startButton.addEventListener( 'click', displayLinkInfo, false );
 
 };
 
-vanillaPress.init();
+guessTheNumber();
 
-// Add your custom code starting here:
+
+
+
+// Clears the Welcome text and starts the game
+var beginGame = function() {
+
+     var  pageTitle = document.getElementById( 'pageTitle' ),
+          startButton = document.getElementById( 'startButton' );
+
+     pageTitle.innerHTML = 'Now Playing';
+     startButton.parentNode.removeChild(startButton);
+
+}
+
+
+
+
+// Inserts the text of instructions and reveal the guessing form
+var insertInstructions = function() {
+
+      var      primary = document.getElementsByClassName( 'primary' )[0],
+               form = document.getElementById( 'number-input' ),
+               p = document.createElement("p"),
+               instructionsText = 'To play, enter a number between 0 and 10:';
+
+          form.classList.toggle('hidden');
+
+          primary.appendChild(p);
+          p.innerHTML = instructionsText;
+
+      console.log(primary);
+
+}

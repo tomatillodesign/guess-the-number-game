@@ -25,3 +25,28 @@ a {
      font-style: italic;
      font-size: 16px;
 }
+
+button, .button {
+     padding: 20px 30px;
+     background: #fff;
+     color: #000;
+     margin: 0;
+     display: inline-block;
+}
+
+.footer {
+     margin-top: 60px;
+}
+
+
+fieldset {
+    border: none;
+}
+
+input {
+    color: #000;
+}
+
+.hidden {
+     display: none;
+}
