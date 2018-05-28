@@ -9,6 +9,9 @@
  *
  */
 
+var  guessesRemaining = 5,
+     gameOver = false;
+
 
 function getRandomInt(min, max) {
        min = Math.ceil(min);
@@ -17,10 +20,28 @@ function getRandomInt(min, max) {
 }
 
 let answer = getRandomInt(0, 11);
+console.log( 'Answer = ' + answer);
+
+
+var checkAnswer = function( guess ) {
+
+     console.log( 'Answer in checkAnswer function = ' + answer );
+     console.log( 'Guess in checkAnswer function = ' + guess );
+
+     if( guess == answer ) {
+          return 'correct';
+     } else if ( guess > answer ) {
+          return 'tooHigh';
+     } else {
+          return 'tooLow';
+     }
+
+};
 
 
 
-var guessTheNumber = function () {
+
+var guessTheNumber = function() {
 
      //Add event listener to start the game when the user presses the start button
      var startButton = document.getElementById( 'startButton' );
@@ -32,7 +53,7 @@ var guessTheNumber = function () {
             // When the button is clicked, run the following functions
             beginGame();
             insertInstructions();
-
+            activePlay();
 
           }
 
@@ -85,29 +106,61 @@ var insertInstructions = function() {
 //Add event listener to start the game when the user presses the start button
 var activePlay = function() {
 
-     //      function displayLinkInfo( event ) {
-     //
-     //        event.preventDefault();
-     //
-     //
-     //      }
-     //
-     // startButton.addEventListener( 'click', displayLinkInfo, false );
 
-     var  form = document.getElementById( 'number-input' ),
-          field = form[0],
-          guess = form[0].value;
+     var  form = document.getElementById( 'number-input' );
 
 
-     console.log( field );
-     console.log( guess );
+     function submitGuess( event ) {
+
+          event.preventDefault();
+
+          var  form = document.getElementById( 'number-input' ),
+               field = form[0],
+               guess = document.getElementById('number').value,
+               guessStatement = 'Your guess is: ' + guess + '.',
+               remainingStatement = ' You have ' + guessesRemaining + ' guesses remaining.',
+               winningStatement,
+               primary = document.getElementsByClassName( 'primary' )[0],
+               p = document.createElement("p"),
+               check = checkAnswer( guess );
 
 
-}
+            // Check guesses left
+            guessesRemaining--;
+                if( guessesRemaining < 0 ) {
+                     statement = 'Your guess is: ' + guess + '. You are out of guesses.';
+                     gameOver = true;
+                }
+
+           //Check Answer
+           if( check === 'correct' ) {
+                winningStatement = ' You are correct! 🎉 🎉 🎉';
+                remainingStatement = '';
+           } else if( check === 'tooHigh'){
+                winningStatement = ' Your guess is too high.';
+           } else if( check === 'tooLow'){
+                winningStatement = ' Your guess is too low.';
+           }
 
 
 
+           document.getElementById('number').value = '';
+           primary.appendChild(p);
+           p.innerHTML = guessStatement + remainingStatement + winningStatement;
 
+           if( gameOver === true ) {
+                alert('Your game is over!');
+           }
+
+
+     }
+
+
+     form.addEventListener( 'submit', submitGuess, false );
+
+
+
+};
 
 
 
@@ -119,4 +172,3 @@ var activePlay = function() {
 // Action!
 
 guessTheNumber();
-activePlay();
