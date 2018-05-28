@@ -32,6 +32,17 @@ button, .button {
      color: #000;
      margin: 0;
      display: inline-block;
+     border-radius: 8px;
+}
+
+button, html input[type=button], input[type=reset], input[type=submit] {
+    padding: 20px 30px;
+    background: #fff;
+    color: #000;
+    margin: 0;
+    display: inline-block;
+    border-radius: 8px;
+    border: none;
 }
 
 .footer {

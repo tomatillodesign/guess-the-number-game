@@ -8,6 +8,18 @@
  * The main app object.
  *
  */
+
+
+function getRandomInt(min, max) {
+       min = Math.ceil(min);
+       max = Math.floor(max);
+       return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+}
+
+let answer = getRandomInt(0, 11);
+
+
+
 var guessTheNumber = function () {
 
      //Add event listener to start the game when the user presses the start button
@@ -28,7 +40,7 @@ var guessTheNumber = function () {
 
 };
 
-guessTheNumber();
+
 
 
 
@@ -42,7 +54,7 @@ var beginGame = function() {
      pageTitle.innerHTML = 'Now Playing';
      startButton.parentNode.removeChild(startButton);
 
-}
+};
 
 
 
@@ -62,4 +74,49 @@ var insertInstructions = function() {
 
       console.log(primary);
 
+};
+
+
+
+
+
+
+
+//Add event listener to start the game when the user presses the start button
+var activePlay = function() {
+
+     //      function displayLinkInfo( event ) {
+     //
+     //        event.preventDefault();
+     //
+     //
+     //      }
+     //
+     // startButton.addEventListener( 'click', displayLinkInfo, false );
+
+     var  form = document.getElementById( 'number-input' ),
+          field = form[0],
+          guess = form[0].value;
+
+
+     console.log( field );
+     console.log( guess );
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+// Action!
+
+guessTheNumber();
+activePlay();
