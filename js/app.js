@@ -1,5 +1,9 @@
 /**
+ * A JS Practice App by Chris Liu-Beers for Code the Dream (homework)
+ *
+ *
  * Main app file.  Runs all components.
+ *
  */
 
 // Global variables for running the game
@@ -10,7 +14,6 @@ var  totalGuesses = 10, // Set the number of guesses here
      possibleAnswerMax = 100, // Set the max range of possible answers here
      answer = getRandomInt(0, possibleAnswerMax + 1);
      console.log( 'Answer = ' + answer);
-
 
 // Function to get a random number in range
 function getRandomInt(min, max) {
@@ -37,9 +40,17 @@ var checkAnswer = function( guess ) {
 };
 
 
-function checkPercentage() {
+// Doesn't Work Yet; trying to calculate and display the odds of guessing correctly on every guess
+// Equation not working, needs some math help
+function checkPercentage( guess, prevGuess ) {
 
-     var percentage = ( 1 / possibleAnswerMax ) * 100;
+     var percentage;
+
+     if( guess >= prevGuess ) {
+          percentage = ( 1 / (guess - prevGuess) ) * 100;
+     } else {
+          percentage = ( 1 / (prevGuess - guess) ) * 100;
+     }
 
      return percentage.toFixed(0);
 
@@ -132,7 +143,8 @@ var setupGame = function() {
 //Add event listener to start the game when the user presses the start button
 var activePlay = function() {
 
-     var  form = document.getElementById( 'number-input' );
+     var  form = document.getElementById( 'number-input' ),
+          prevGuess = document.getElementById('number').value;
 
      // Runs the game as the user submits numbers into the form
      function submitGuess( event ) {
@@ -163,8 +175,8 @@ var activePlay = function() {
                     gameIsNowOver();
                }
 
-           var percentage = checkPercentage();
-           guessStatement += '<span class="percentage">' + percentage + '%</span>';
+           //var percentage = checkPercentage( guess, prevGuess );
+
 
            //Check Answer
            if( check === 'correct' ) {
@@ -176,10 +188,12 @@ var activePlay = function() {
 
            } else if( check === 'tooHigh'){
 
+                //guessStatement += '<span class="percentage">' + percentage + '%</span>';
                 winningStatement = ' Your guess is too high.';
 
            } else if( check === 'tooLow'){
 
+                //guessStatement += '<span class="percentage">' + percentage + '%</span>';
                 winningStatement = ' Your guess is too low.';
 
            }
