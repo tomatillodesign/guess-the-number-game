@@ -8,22 +8,30 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 body {
      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
      text-align: center;
-     background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+     background: linear-gradient(90deg, #FDBB2D 0%, #22C1C3 100%);
      color: #fff;
+     font-weight: 200;
+     font-size: 20px;
+}
+
+.page-header h1 {
+     font-size: 80px;
+
 }
 
 h1, h2, a {
      color: #fff;
+     font-weight: 200;
 }
 
 a {
      text-decoration: none;
 }
 
-#siteDesription {
-     font-weight: 300;
-     font-style: italic;
-     font-size: 16px;
+#siteDesription, .footer {
+     font-weight: 200;
+     /* font-style: italic; */
+     font-size: 12px;
 }
 
 button, .button {
@@ -33,6 +41,8 @@ button, .button {
      margin: 0;
      display: inline-block;
      border-radius: 8px;
+     transition: all ease-in-out .25s;
+     text-transform: uppercase;
 }
 
 button, html input[type=button], input[type=reset], input[type=submit] {
@@ -43,6 +53,13 @@ button, html input[type=button], input[type=reset], input[type=submit] {
     display: inline-block;
     border-radius: 8px;
     border: none;
+    text-transform: uppercase;
+    transition: all ease-in-out .25s;
+}
+
+button:hover, .button:hover, input[type=submit]:hover {
+     color: #fff;
+     background: #000;
 }
 
 .footer {
@@ -60,4 +77,13 @@ input {
 
 .hidden {
      display: none;
+}
+
+.percentage {
+     float: right;
+     margin-left: 12px;
+     font-size: 12px;
+     padding: 12px;
+     color: #333;
+     background: rgba(255,255,255,.8)
 }
