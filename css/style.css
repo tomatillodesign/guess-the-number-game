@@ -12,6 +12,10 @@ body {
      color: #fff;
      font-weight: 200;
      font-size: 20px;
+     /* background-size: 400% 400%;
+     -webkit-animation: AnimateBackground 30s ease infinite;
+     -moz-animation: AnimateBackground 30s ease infinite;
+     animation: AnimateBackground 30s ease infinite; */
 }
 
 .page-header h1 {
@@ -87,4 +91,23 @@ input {
      padding: 12px;
      color: #333;
      background: rgba(255,255,255,.8)
+}
+
+
+
+
+@-webkit-keyframes AnimateBackground {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes AnimateBackground {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes AnimateBackground {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
 }

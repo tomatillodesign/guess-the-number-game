@@ -12,7 +12,7 @@ var  totalGuesses = 10, // Set the number of guesses here
      guessesRemaining = totalGuesses - 1,
      possibleAnswerMin = 0, // Set the min range of possible answers here
      possibleAnswerMax = 100, // Set the max range of possible answers here
-     answer = getRandomInt(0, possibleAnswerMax + 1);
+     answer = getRandomInt(possibleAnswerMin, possibleAnswerMax + 1);
      console.log( 'Answer = ' + answer);
 
 // Function to get a random number in range
